@@ -5,12 +5,15 @@ from system import (
 )
 
 class Facade:
-    def __init__(self, 
-        system_a = SystemA(), 
-        system_b = SystemB(), 
-        system_c = SystemC()
-    ):
+    def __init__(self):
+        self.systems = [
+            SystemA(), 
+            SystemB(), 
+            SystemC()
+        ]
     
-        system_a.get_info()   
-        system_b.get_info()
-        system_c.get_info()
+        self.instance()
+
+    def instance(self):
+        list(map(lambda system: system.get_info(), self.systems))  
+        
